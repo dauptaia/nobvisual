@@ -1,0 +1,3 @@
+[console_scripts]
+nobvisual = nobvisual.cli:main_cli
+

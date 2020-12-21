@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: nobvisual
+Version: 0.0.0a0
+Summary: visialization of nested objets
+Home-page: UNKNOWN
+Author-email: coop@cerfacs.fr
+License: UNKNOWN
+Description: *WORK IN PROGRES*
+        
+        # NOB VISUAL
+        
+        Visualization of nested objects
+        
+        
+        ## Installation
+        
+        Installation using Pypi:
+        
+        ```bash
+        > pip install nobvisual
+        ```
+        
+        ## Usage
+        
+        Use the CLI 
+        
+        ```bash
+        > nobvisual
+        ````
+        
+Keywords: nested objects
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown

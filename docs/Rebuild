@@ -1,0 +1,5 @@
+rm -rf api
+sphinx-apidoc ../src/nobvisual -o api --module-first  --no-toc
+
+make html
+

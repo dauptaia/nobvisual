@@ -1,0 +1,99 @@
+ms\_thermo package
+==================
+
+.. automodule:: ms_thermo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+ms\_thermo.cli module
+---------------------
+
+.. automodule:: ms_thermo.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.constants module
+---------------------------
+
+.. automodule:: ms_thermo.constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.example\_gasout module
+---------------------------------
+
+.. automodule:: ms_thermo.example_gasout
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.flame\_params module
+-------------------------------
+
+.. automodule:: ms_thermo.flame_params
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.fresh\_gas module
+----------------------------
+
+.. automodule:: ms_thermo.fresh_gas
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.gasout module
+------------------------
+
+.. automodule:: ms_thermo.gasout
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.mixture\_state module
+--------------------------------
+
+.. automodule:: ms_thermo.mixture_state
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.species module
+-------------------------
+
+.. automodule:: ms_thermo.species
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.state module
+-----------------------
+
+.. automodule:: ms_thermo.state
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.tadia module
+-----------------------
+
+.. automodule:: ms_thermo.tadia
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ms\_thermo.yk\_from\_phi module
+-------------------------------
+
+.. automodule:: ms_thermo.yk_from_phi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
