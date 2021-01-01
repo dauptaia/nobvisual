@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="NOB VISUAL" href="../readme_copy.html" /> 
+    <link rel="prev" title="Content" href="../content.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,13 +93,19 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../readme_copy.html">NOB VISUAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content.html">Content</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">nobvisual package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.cli">nobvisual.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.file2nob">nobvisual.file2nob module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-a-nested-object-from-a-serialization-file">Build a nested object from a serialization file</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.nob2nstruct">nobvisual.nob2nstruct module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#convert-a-nested-object-to-a-circlify-object">Convert a Nested object to a circlify object</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.nobcompare">nobvisual.nobcompare module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.tkinter_circlify">nobvisual.tkinter_circlify module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#browse-a-circlify-object-with-tkinter">Browse a circlify object with tkinter</a></li>
 </ul>
@@ -183,6 +189,19 @@
 <span id="nobvisual-cli-module"></span><h2>nobvisual.cli module<a class="headerlink" href="#module-nobvisual.cli" title="Permalink to this headline">¶</a></h2>
 <p>command line of nob visualizee</p>
 </div>
+<div class="section" id="module-nobvisual.file2nob">
+<span id="nobvisual-file2nob-module"></span><h2>nobvisual.file2nob module<a class="headerlink" href="#module-nobvisual.file2nob" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build-a-nested-object-from-a-serialization-file">
+<h3>Build a nested object from a serialization file<a class="headerlink" href="#build-a-nested-object-from-a-serialization-file" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="nobvisual.file2nob.file_2_nob">
+<code class="sig-prename descclassname">nobvisual.file2nob.</code><code class="sig-name descname">file_2_nob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.file2nob.file_2_nob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a nob from a serialization file
+:params path: path to a file</p>
+</dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-nobvisual.nob2nstruct">
 <span id="nobvisual-nob2nstruct-module"></span><h2>nobvisual.nob2nstruct module<a class="headerlink" href="#module-nobvisual.nob2nstruct" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="convert-a-nested-object-to-a-circlify-object">
@@ -212,7 +231,69 @@ for exampke the content of a YAML or JSON file.</p>
 <p>in a list. This is compatible with the circlify package.</p>
 </dd></dl>
 
+<dl class="py function">
+<dt id="nobvisual.nob2nstruct.mv_to_dict">
+<code class="sig-prename descclassname">nobvisual.nob2nstruct.</code><code class="sig-name descname">mv_to_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.nob2nstruct.mv_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a multiple value data into a dict</p>
+<p>data : a multiple valued data , usually list or dict</p>
+<p>dictdata :  same data as a disctionnary</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nobvisual.nob2nstruct.visual_treefile">
+<code class="sig-prename descclassname">nobvisual.nob2nstruct.</code><code class="sig-name descname">visual_treefile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.nob2nstruct.visual_treefile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the circular nested packing of a serialization file.</p>
+<p>The circular packing is computed using the circlify package.
+The graphical output is done using tkinter.
+Area of circles is proportional to lthe log10 of file sizes.</p>
+</dd></dl>
+
 </div>
+</div>
+<div class="section" id="module-nobvisual.nobcompare">
+<span id="nobvisual-nobcompare-module"></span><h2>nobvisual.nobcompare module<a class="headerlink" href="#module-nobvisual.nobcompare" title="Permalink to this headline">¶</a></h2>
+<p>Compare two nested objects, and store the result in a circlufy nested structure</p>
+<dl class="py function">
+<dt id="nobvisual.nobcompare.nob_compare">
+<code class="sig-prename descclassname">nobvisual.nobcompare.</code><code class="sig-name descname">nob_compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noba</span></em>, <em class="sig-param"><span class="n">nobb</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.nobcompare.nob_compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare two nested objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params noba</dt>
+<dd class="field-odd"><p>left node</p>
+</dd>
+<dt class="field-even">Params nobb</dt>
+<dd class="field-even"><p>right node</p>
+</dd>
+<dt class="field-odd">Returns cirlify_nob</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nobvisual.nobcompare.nob_compare_tkinter">
+<code class="sig-prename descclassname">nobvisual.nobcompare.</code><code class="sig-name descname">nob_compare_tkinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">noba</span></em>, <em class="sig-param"><span class="n">nobb</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.nobcompare.nob_compare_tkinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare two nested objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params noba</dt>
+<dd class="field-odd"><p>left node</p>
+</dd>
+<dt class="field-even">Params nobb</dt>
+<dd class="field-even"><p>right node</p>
+</dd>
+<dt class="field-odd">Returns nothing</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<p>Open a tkinter object to show the comparison</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nobvisual.nobcompare.visual_comparefile">
+<code class="sig-prename descclassname">nobvisual.nobcompare.</code><code class="sig-name descname">visual_comparefile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_left</span></em>, <em class="sig-param"><span class="n">path_right</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.nobcompare.visual_comparefile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show visually the differences between two serialization file.</p>
+<p>The circular packing is computed using the circlify package.
+The graphical output is done using tkinter.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-nobvisual.tkinter_circlify">
 <span id="nobvisual-tkinter-circlify-module"></span><h2>nobvisual.tkinter_circlify module<a class="headerlink" href="#module-nobvisual.tkinter_circlify" title="Permalink to this headline">¶</a></h2>
@@ -220,7 +301,7 @@ for exampke the content of a YAML or JSON file.</p>
 <h3>Browse a circlify object with tkinter<a class="headerlink" href="#browse-a-circlify-object-with-tkinter" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="nobvisual.tkinter_circlify.tkcirclify">
-<code class="sig-prename descclassname">nobvisual.tkinter_circlify.</code><code class="sig-name descname">tkcirclify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">circlify</span></em>, <em class="sig-param"><span class="n">holder</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'#777777'</span></em>, <em class="sig-param"><span class="n">shade</span><span class="o">=</span><span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.tkinter_circlify.tkcirclify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">nobvisual.tkinter_circlify.</code><code class="sig-name descname">tkcirclify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">circlify</span></em>, <em class="sig-param"><span class="n">holder</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'#777777'</span></em>, <em class="sig-param"><span class="n">shade</span><span class="o">=</span><span class="default_value">0.2</span></em>, <em class="sig-param"><span class="n">legend</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.tkinter_circlify.tkcirclify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a Circlify in a Tkinter canvas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -243,7 +324,7 @@ in range of floats [-0.5, 0.5]</p></li>
 <h3>Draw the circular packing of a folder tree.<a class="headerlink" href="#draw-the-circular-packing-of-a-folder-tree" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="nobvisual.visualtree.visual_tree">
-<code class="sig-prename descclassname">nobvisual.visualtree.</code><code class="sig-name descname">visual_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wdir</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.visualtree.visual_tree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">nobvisual.visualtree.</code><code class="sig-name descname">visual_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tgt</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.visualtree.visual_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the circular nested packing of a directory tree.</p>
 <p>The circular packing is computed using the circlify package.
 The graphical output is done using tkinter.
@@ -270,7 +351,7 @@ ASCII-UTF8 files are blue, others (usually Binary)  are in green.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../readme_copy.html" class="btn btn-neutral float-left" title="NOB VISUAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../content.html" class="btn btn-neutral float-left" title="Content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

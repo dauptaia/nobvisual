@@ -17,10 +17,26 @@ nobvisual.cli module
    :undoc-members:
    :show-inheritance:
 
+nobvisual.file2nob module
+-------------------------
+
+.. automodule:: nobvisual.file2nob
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 nobvisual.nob2nstruct module
 ----------------------------
 
 .. automodule:: nobvisual.nob2nstruct
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+nobvisual.nobcompare module
+---------------------------
+
+.. automodule:: nobvisual.nobcompare
    :members:
    :undoc-members:
    :show-inheritance:

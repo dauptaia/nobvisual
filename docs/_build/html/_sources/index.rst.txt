@@ -13,6 +13,7 @@
    :caption: Contents:
 
    readme_copy
+   content
    api/nobvisual
 
 Indices and tables
