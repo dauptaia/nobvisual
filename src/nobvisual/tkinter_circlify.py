@@ -1,54 +1,75 @@
-"""module to browse a circlify object with tkinter"""
+"""
+
+Browse a circlify object with tkinter
+=====================================
+"""
 
 
 from pprint import pprint as pp
 import circlify as circ
 import tkinter
 
-SIZE = 600
+SIZE = 800
 BKGD = "white"
 
 
 __all__ = ["tkcirclify"]
 
-def test_tkinter_circlify():
-    """show off"""
 
-    data = [
-        0.05, 
-        {'id': 'a2', 'datum': 0.05},
-        {'id': 'a0', 'datum': 0.8, 'children': [
-            0.3, 0.2, 0.2, 0.1
-            ], 
-        },
-        {'id': 'a1', 'datum': 0.1, 'children': [
-            {
-                'id': 'a1_1', 'datum': 0.05
-            }, 
-            {
-                'datum': 0.04
-            },
-            0.01
-            ],
-        },
-    ]
-    circles = circ.circlify(data, show_enclosure=True)
-    #circles = circ.circlify([19, 17, 13, 11, 7, 5, 3, 2, 1], show_enclosure=True)
-    pp(circles)
-    #circ.bubbles(circles)
-    tkinter_circlify(circles)
+def tkcirclify(circlify, holder=None, color="#777777",shade=0.2, legend=None, title=None):
+    """Generate a Circlify in a Tkinter canvas.
+    
+    :param circlify: a ciclify object, list of Circles objects.
+    :param color: hex coloer, for background of circles.
+    :param shade: shading, making nested levels lighter (>0) or darker (<0)
+        in range of floats [-0.5, 0.5]
 
+    No returns
+    ----------
 
-
-def tkcirclify(circlify, holder=None, color="#777777",shade=0.2):
-    """Generate a Circlify in aTkinter canvas"""
+    Interrupt the process with a tkinter canvas.
+    """
 
     can = create_window(holder=holder)
     
     for circle in circlify:
         draw_circle(can, circle, base_color=color, shade=shade)
 
+    if title is not None:
+        draw_title(can, title)
+
+    if legend is not None:
+        draw_legend(can, legend)
     tkinter.mainloop()
+
+
+def draw_title(can, title):
+    """Draw the tiutle"""
+    x_pix = int(0.5*SIZE)
+    y_pix = int(0.02*SIZE)
+    can.create_text(x_pix,y_pix, text=title, anchor="n", justify="center")    
+
+def draw_legend(can, legend):
+    """Draw a legend on the canvas"""
+
+    unit = int(0.03*SIZE)
+
+    x_pix =  2*unit
+    y_pix =  5*unit
+    
+    for labl in legend:
+        can.create_oval(
+            x_pix-0.5*unit,
+            y_pix-0.5*unit,
+            x_pix+0.5*unit,
+            y_pix+0.5*unit,
+            fill = labl[1],
+            outline=color_shade(labl[1],-0.2),
+            )
+        can.create_text(x_pix+0.81*unit,y_pix, text=labl[0], anchor="w")
+        y_pix += 1.62* unit
+
+
 
 def create_window(holder=None):
     """Create general window"""
@@ -63,44 +84,72 @@ def create_window(holder=None):
     can.pack(side="bottom", fill="x")
     return can
 
+
 def draw_circle(can, circle, base_color, shade=0.1):
     """Draw the circle"""
     x__, y__, r__ = circle.circle
-    xpix = (1+x__) * SIZE*0.5
-    ypix = (1+ y__) * SIZE*0.5
-    rpix = r__ * SIZE*0.5
+    smaller = 0.90
+
+    x_center = SIZE*0.5
+    y_center = SIZE*(0.5 + 0.4*(1-smaller))
     
-    color = hex2rgb(base_color)
+    xpix = x_center + x__ * SIZE * 0.5 *smaller
+    ypix = y_center + y__ * SIZE * 0.5 *smaller
+    rpix = r__ * SIZE*0.5*smaller
+    
+    color = base_color
+    for _ in range(circle.level):
+        color =  color_shade(color, shade)
+    
     tag= None
 
+    anchor = None
+            
     if circle.ex is not None:
         if "id" in circle.ex:
             list_ = circle.ex["id"].split("|")
             tag=list_[0]
             for item in list_:
                 if item.startswith("COLOR"):
-                    color = item.split("=")[-1]
-                    if color =="default":
-                        color = hex2rgb(base_color)
+                    custom_color = item.split("=")[-1]
+                    if custom_color =="default":
+                        pass
                     else:
-                        color = hex2rgb(color)
+                        color = custom_color
+                if item.startswith("ANCHOR"):
+                    anchor = item.split("=")[-1]
     
-    for _ in range(circle.level):
-        color =   color_shade(color, shade)
+    item = can.create_oval(
+        (xpix-rpix, ypix-rpix, xpix+rpix, ypix+rpix),
+        fill=color,
+        outline=color_shade(color,-0.2),
+    )
+
+    if anchor is not None:
+        can.create_text(
+            (xpix, ypix),
+            text=anchor,
+        )
     
-    item = can.create_oval((xpix-rpix, ypix-rpix, xpix+rpix, ypix+rpix), fill=rgb2hex(color),outline=rgb2hex(color_shade(color,-0.2)), )
     can.tag_bind(item, "<Enter>", lambda event, arg=tag: enter_tag(event,arg))
     can.tag_bind(item, "<Leave>", lambda event, arg=tag: leave_tag())
-
- 
-
     
     def enter_tag(event,tag):
-        can.create_text(event.x+20, event.y-20, text=tag, tags="hover")
+        hilitext(can, tag, event.x-30, event.y+60, tags="hover")
         
     def leave_tag():
         can.delete("hover")
+
+
+def hilitext(can, text, xpix, ypix,tags=None):
+    """Highcontrast text"""
+    can.create_text(xpix+1, ypix+1, text=text, tags=tags, fill="white")
+    can.create_text(xpix+1, ypix-1, text=text, tags=tags, fill="white")
+    can.create_text(xpix-1, ypix+1, text=text, tags=tags, fill="white")
+    can.create_text(xpix-1, ypix-1, text=text, tags=tags, fill="white")
+    can.create_text(xpix, ypix, text=text, tags=tags, fill="black")
     
+
 def color_shade(color, adjust):
     """ alter a color to ligther or darker tone
     Parameters :
@@ -112,14 +161,18 @@ def color_shade(color, adjust):
     --------
     shaded : tuple of the color, shaded
     """
+    colorrgb = hex2rgb(color)
+
     shaded = []
-    for col in color:
+    for col in colorrgb:
         if adjust > 0:
             out = 1 * adjust + float(col) * (1-adjust)
         else:
             out = float(col) * (1-abs(adjust))
         shaded.append(int(out))
-    return shaded
+    
+    colorout = rgb2hex(shaded)
+    return colorout
 
 
 def rgb2hex(list_rgb):

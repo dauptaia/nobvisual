@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Indices and tables" href="../index.html" /> 
+    <link rel="prev" title="NOB VISUAL" href="../readme_copy.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                3.3
+                0.0
               </div>
             
           
@@ -92,12 +92,22 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme_copy.html">NOB VISUAL</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">nobvisual package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.cli">nobvisual.cli module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.nob2nstruct">nobvisual.nob2nstruct module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.tkinter_circlify">nobvisual.tkinter_circlify module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.visualtree">nobvisual.visualtree module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.nob2nstruct">nobvisual.nob2nstruct module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#convert-a-nested-object-to-a-circlify-object">Convert a Nested object to a circlify object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.tkinter_circlify">nobvisual.tkinter_circlify module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#browse-a-circlify-object-with-tkinter">Browse a circlify object with tkinter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nobvisual.visualtree">nobvisual.visualtree module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#draw-the-circular-packing-of-a-folder-tree">Draw the circular packing of a folder tree.</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -171,62 +181,83 @@
 </div>
 <div class="section" id="module-nobvisual.cli">
 <span id="nobvisual-cli-module"></span><h2>nobvisual.cli module<a class="headerlink" href="#module-nobvisual.cli" title="Permalink to this headline">¶</a></h2>
-<p>command line of nobvisualizee</p>
+<p>command line of nob visualizee</p>
 </div>
 <div class="section" id="module-nobvisual.nob2nstruct">
 <span id="nobvisual-nob2nstruct-module"></span><h2>nobvisual.nob2nstruct module<a class="headerlink" href="#module-nobvisual.nob2nstruct" title="Permalink to this headline">¶</a></h2>
-<p>Module to convert a Nested object to a Nob-struct object</p>
-<p>Nob struc is a description of a Nob compatible with a Circular packing representation</p>
+<div class="section" id="convert-a-nested-object-to-a-circlify-object">
+<h3>Convert a Nested object to a circlify object<a class="headerlink" href="#convert-a-nested-object-to-a-circlify-object" title="Permalink to this headline">¶</a></h3>
+<p>Nob-struc is a description of a Nob compatible with a Circular packing representation, using the circlify package API.</p>
 <dl class="py function">
 <dt id="nobvisual.nob2nstruct.build_nstruct">
 <code class="sig-prename descclassname">nobvisual.nob2nstruct.</code><code class="sig-name descname">build_nstruct</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nob</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.nob2nstruct.build_nstruct" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build the nested_structure of a nested object</p>
+<dd><p>Build the nested_structure of a nested object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>nob</strong> – a nested object</p>
+<dd class="field-odd"><p><strong>nob</strong> – a nested object
+for exampke the content of a YAML or JSON file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
-<blockquote>
-<div><p>nested dicts of type
-{</p>
-<blockquote>
-<div><p>“id”: name,
-“datum”: 1.,   &lt;- tot nb of children
-“path”: path,   &lt;_full path to this item
-“color”: level, &lt;- the level for now
-“children:[]     &lt;- if children list of nesting here</p>
-</div></blockquote>
-<p>} 
-in a list.</p>
-</div></blockquote>
+<p>nested dicts of type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+    <span class="s2">&quot;datum&quot;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>      <span class="c1"># &lt;- tot nb of children</span>
+    <span class="s2">&quot;children: [ ],   # &lt;- if children list of nesting here</span>
+<span class="p">}</span> 
+</pre></div>
+</div>
+<p>in a list. This is compatible with the circlify package.</p>
 </dd></dl>
 
+</div>
 </div>
 <div class="section" id="module-nobvisual.tkinter_circlify">
 <span id="nobvisual-tkinter-circlify-module"></span><h2>nobvisual.tkinter_circlify module<a class="headerlink" href="#module-nobvisual.tkinter_circlify" title="Permalink to this headline">¶</a></h2>
-<p>module to browse a circlify object with tkinter</p>
+<div class="section" id="browse-a-circlify-object-with-tkinter">
+<h3>Browse a circlify object with tkinter<a class="headerlink" href="#browse-a-circlify-object-with-tkinter" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="nobvisual.tkinter_circlify.tkcirclify">
 <code class="sig-prename descclassname">nobvisual.tkinter_circlify.</code><code class="sig-name descname">tkcirclify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">circlify</span></em>, <em class="sig-param"><span class="n">holder</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'#777777'</span></em>, <em class="sig-param"><span class="n">shade</span><span class="o">=</span><span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.tkinter_circlify.tkcirclify" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a Circlify in aTkinter canvas</p>
+<dd><p>Generate a Circlify in a Tkinter canvas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>circlify</strong> – a ciclify object, list of Circles objects.</p></li>
+<li><p><strong>color</strong> – hex coloer, for background of circles.</p></li>
+<li><p><strong>shade</strong> – shading, making nested levels lighter (&gt;0) or darker (&lt;0)
+in range of floats [-0.5, 0.5]</p></li>
+</ul>
+</dd>
+</dl>
+<p>Interrupt the process with a tkinter canvas.</p>
 </dd></dl>
 
 </div>
+</div>
 <div class="section" id="module-nobvisual.visualtree">
 <span id="nobvisual-visualtree-module"></span><h2>nobvisual.visualtree module<a class="headerlink" href="#module-nobvisual.visualtree" title="Permalink to this headline">¶</a></h2>
-<p>Module to draw the circular packing of a folder tree</p>
-<dl class="py function">
-<dt id="nobvisual.visualtree.scan_wdir">
-<code class="sig-prename descclassname">nobvisual.visualtree.</code><code class="sig-name descname">scan_wdir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wdir</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.visualtree.scan_wdir" title="Permalink to this definition">¶</a></dt>
-<dd><p>build the strucutre of a folder tree</p>
-</dd></dl>
-
+<div class="section" id="draw-the-circular-packing-of-a-folder-tree">
+<h3>Draw the circular packing of a folder tree.<a class="headerlink" href="#draw-the-circular-packing-of-a-folder-tree" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="nobvisual.visualtree.visual_tree">
 <code class="sig-prename descclassname">nobvisual.visualtree.</code><code class="sig-name descname">visual_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wdir</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#nobvisual.visualtree.visual_tree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show the circular paking of a directory tree</p>
+<dd><p>Show the circular nested packing of a directory tree.</p>
+<p>The circular packing is computed using the circlify package.
+The graphical output is done using tkinter.
+Area of circles is proportional to lthe log10 of file sizes.
+ASCII-UTF8 files are blue, others (usually Binary)  are in green.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params wdir</dt>
+<dd class="field-odd"><p>path to a working directory. If None, set to current working directory.</p>
+</dd>
+</dl>
+<p>Open a tkinter window with the circular packing.</p>
 </dd></dl>
 
+</div>
 </div>
 </div>
 
@@ -239,7 +270,7 @@ in a list.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../index.html" class="btn btn-neutral float-left" title="Indices and tables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../readme_copy.html" class="btn btn-neutral float-left" title="NOB VISUAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

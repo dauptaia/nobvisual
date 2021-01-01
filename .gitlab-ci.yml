@@ -1,0 +1,60 @@
+stages:
+    - all
+
+# CACHE TEST
+# variables:
+#     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+# 
+# cache:
+#   paths:
+#     - .cache/pip
+#     - venv
+
+before_script:
+    - python -V
+#    - pip install virtualenv
+#    - virtualenv venv
+#    - source venv/bin/activate
+#    - pip install -r requirements.txt
+    - python setup.py install
+
+# test:
+#     stage: all
+#     image: devops
+#     tags:
+#         - docker.elmer.nitrox
+#     script:
+#         - PYTHONDONTWRITEBYTECODE=1 pytest --cov ms_thermo -vv
+
+lint:
+    stage: all
+    image: devops
+    tags:
+        - docker.elmer.nitrox
+    script:
+        - pip install anybadge
+        - pylint ms_thermo --output-format=text --exit-zero | tee pylint.txt
+        - score=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' pylint.txt)
+        - anybadge -l pylint  -o --file=pylint.svg -v $score  2=red 4=orange 8=yellow 10=green
+    artifacts:
+        paths:
+          - pylint.svg
+
+
+# pages:
+#     stage: all
+#     image: devops
+#     tags:
+#         - docker.elmer.nitrox
+#     script:
+#         - pip install sphinx_rtd_theme
+#         - pip install m2r
+#         - cd docs
+#         - make html
+#         - mv _build/html/ ../public/
+#     artifacts:
+#         paths:
+#             - public
+#     only:
+#         - master
+

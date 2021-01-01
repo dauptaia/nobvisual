@@ -1,8 +1,11 @@
+MANIFEST.in
 README.md
+VERSION
 setup.py
 src/nobvisual/__init__.py
 src/nobvisual/cli.py
 src/nobvisual/nob2nstruct.py
+src/nobvisual/nobcompare.py
 src/nobvisual/tkinter_circlify.py
 src/nobvisual/visualtree.py
 src/nobvisual.egg-info/PKG-INFO
@@ -12,3 +15,9 @@ src/nobvisual.egg-info/entry_points.txt
 src/nobvisual.egg-info/not-zip-safe
 src/nobvisual.egg-info/requires.txt
 src/nobvisual.egg-info/top_level.txt
+src/nobvisual/__pycache__/__init__.cpython-38.pyc
+src/nobvisual/__pycache__/cli.cpython-38.pyc
+src/nobvisual/__pycache__/nob2nstruct.cpython-38.pyc
+src/nobvisual/__pycache__/nobcompare.cpython-38.pyc
+src/nobvisual/__pycache__/tkinter_circlify.cpython-38.pyc
+src/nobvisual/__pycache__/visualtree.cpython-38.pyc

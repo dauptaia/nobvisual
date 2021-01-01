@@ -12,6 +12,7 @@
    :maxdepth: 2
    :caption: Contents:
 
+   readme_copy
    api/nobvisual
 
 Indices and tables

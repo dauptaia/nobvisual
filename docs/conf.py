@@ -15,7 +15,7 @@
 # import os
 # import sys
 import shutil
-import opentea
+import nobvisual
 import sphinx_rtd_theme
 import recommonmark
 #sys.path.insert(0, os.path.abspath('./opentea/utils'))
@@ -27,9 +27,7 @@ def _copy_readme():
 
 def _get_version():
     """Get the version"""
-    version = ""
-    release = ''
-    ver = opentea.__version__
+    ver = nobvisual.__version__
     ver_split = [key for key in ver.split('.') if key]
     if len(ver_split) >= 3:
         release = ".".join(ver.split('.')[:3])

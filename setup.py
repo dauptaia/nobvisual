@@ -5,16 +5,15 @@
     nob visual
 
 """
-
+import os.path as path
 from glob import glob
 from os.path import basename
 #from os.path import dirname
-#from os.path import join
+from os.path import join
 from os.path import splitext
 from setuptools import find_packages, setup
 
-NAME = "nobvisual"
-VERSION = "0.0.0a0"
+
 # To install the library, run the following
 #
 # python setup.py install
@@ -22,17 +21,20 @@ VERSION = "0.0.0a0"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
-with open("README.md", "r") as fin:
-    readme = fin.read()
+with open(path.join(this_directory, 'VERSION'), encoding='utf-8') as f:
+    version = f.read()
 
 setup(
-    name=NAME,
-    version=VERSION,
-    description="visialization of nested objets",
+    name= "nobvisual",
+    version=version,
+    description="visualization of nested objets",
     author_email="coop@cerfacs.fr",
     url="",
-    long_description=readme,
+    long_description=long_description,
     long_description_content_type="text/markdown",
     keywords=["nested objects"],
      classifiers=[
@@ -41,8 +43,7 @@ setup(
     ],
     install_requires=[
         "setuptools",
-        "yaml",
-        "tkinter",
+        "PyYAML",
         "circlify"
     ],
     packages=find_packages("src"),
